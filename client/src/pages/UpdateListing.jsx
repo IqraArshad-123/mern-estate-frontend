@@ -30,7 +30,7 @@ export default function UpdateListing() {
   useEffect(() => {
     const fetchListing = async () => {
         const listingId = params.listingId;
-        const res = await fetch(`/api/listing/get/${listingId}`);
+        const res = await fetch(`https://mern-estate-backend-xi.vercel.app/api/listing/get/${listingId}`);
         const data = await res.json();
         if (data.success === false) {
             console.log(data.message);
@@ -77,7 +77,7 @@ export default function UpdateListing() {
   files.forEach((file) => formDataToSend.append("images", file));
 
   const res = await fetch(
-    "http://localhost:3000/api/upload/listing-images",
+    "https://mern-estate-backend-xi.vercel.app/api/upload/listing-images",
     {
       method: "POST",
       credentials: "include", // if backend uses cookies/auth
@@ -147,46 +147,6 @@ export default function UpdateListing() {
     }
   };
 
-
-
-  /* ------------------ Submit Listing ------------------ */
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log("📦 FORMDATA:", [...formData.entries()]);
-
-  //   if (formData.imageUrls.length < 1)
-  //     return setError("You have to upload at least 1 image");
-  //   if (formData.regularPrice < formData.discountPrice)
-  //     return setError("Discount price must be less than regular price");
-
-  //   try {
-  //     setLoadingForServer(true);
-
-  //     const response = await fetch(
-  //      `/api/listing/update/${params.listingId}`,
-  //       {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         credentials: "include",
-  //         body: JSON.stringify({
-  //           ...formData,
-  //           userRef: currentUser._id,
-  //         }),
-  //       }
-  //     );
-
-  //     const jsonData = await response.json();
-  //       setLoadingForServer(false);
-  //       if(jsonData.success === false) {
-  //       setError(jsonData.message);
-  //       }
-  //     navigate(`/listing/${jsonData._id}`);
-  //   } catch (err) {
-  //     setLoadingForServer(false);
-  //     setError(err.message);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -219,7 +179,7 @@ export default function UpdateListing() {
     console.log("📦 FORMDATA:", [...data.entries()]);
 
     const response = await fetch(
-      `/api/listing/update/${params.listingId}`,
+      `https://mern-estate-backend-xi.vercel.app/api/listing/update/${params.listingId}`,
       {
         method: "PUT", // ✅ UPDATE
         credentials: "include",

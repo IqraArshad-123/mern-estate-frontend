@@ -16,7 +16,7 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const res = await fetch('/api/auth/signup', 
+    const res = await fetch('https://mern-estate-backend-xi.vercel.app/api/auth/signup', 
       {
         method: 'POST',
         headers: {

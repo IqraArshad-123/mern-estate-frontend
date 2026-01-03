@@ -18,7 +18,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(signInStart());
-    const res = await fetch('/api/auth/signin', 
+    const res = await fetch('https://mern-estate-backend-xi.vercel.app/api/auth/signin', 
       {
         method: 'POST',
         headers: {
